@@ -1,0 +1,2 @@
+# myanimu
+ A anime datebase
