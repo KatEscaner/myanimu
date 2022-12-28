@@ -23,7 +23,6 @@ public class Genre {
     @Column(name = "name", length = 20)
     private String  name;
 
-    @Getter @Setter
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
@@ -35,7 +34,6 @@ public class Genre {
     )
     private Set<Multimedia> multimedias;
 
-    @Getter @Setter
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
