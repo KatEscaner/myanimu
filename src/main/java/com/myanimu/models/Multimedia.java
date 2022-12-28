@@ -36,10 +36,12 @@ public class Multimedia {
     @Column(name = "finished")
     private boolean finished;
 
+    @Getter @Setter
     @ManyToOne()
     @JoinColumn(name = "franchise")
     private Franchise franchise;
 
+    @Getter @Setter
     @ManyToOne()
     @JoinColumn(name = "studio")
     private Studio studio;
