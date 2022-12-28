@@ -1,6 +1,6 @@
 package com.myanimu.controllers;
 
-import com.myanimu.dao.StudioDao;
+import com.myanimu.dao.StudioDAO;
 import com.myanimu.models.Studio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,10 @@ import java.util.List;
 public class StudioController {
 
     @Autowired
-    private StudioDao studioDao;
+    private StudioDAO studioDao;
 
     @RequestMapping(value = "api/studio/{id}", method = RequestMethod.GET)
-    public Studio getStudio(@RequestBody int id){
+    public Studio getStudio(@PathVariable int id){
         return studioDao.getStudio(id);
     }
 
@@ -25,11 +25,11 @@ public class StudioController {
 
     @RequestMapping(value = "api/studio", method = RequestMethod.POST)
     public void addStudio(@RequestBody Studio studio){
-        studioDao.add(studio);
+        studioDao.addStudio(studio);
     }
 
     @RequestMapping(value = "api/studio/{id}", method = RequestMethod.DELETE)
     public void removeStudio(@PathVariable int id){
-        studioDao.remove(id);
+        studioDao.removeStudio(id);
     }
 }
