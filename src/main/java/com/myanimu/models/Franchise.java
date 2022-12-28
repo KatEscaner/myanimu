@@ -15,7 +15,8 @@ public class Franchise {
 
     @Getter @Setter
     @Id
-    @Column(name = "id", length = 3)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Getter @Setter

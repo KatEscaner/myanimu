@@ -34,8 +34,6 @@ public class User {
     @Column(name = "country", length = 3)
     private String country;
 
-    @Getter
-    @Setter
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private ListAnime listAnime;
 }
