@@ -4,9 +4,10 @@ import com.myanimu.models.Studio;
 
 import java.util.List;
 
-public interface StudioDao {
+public interface StudioDAO {
     List<Studio> getStudios();
-    void remove(int id);
-    void add(Studio studio);
+    void removeStudio(int id);
+    void addStudio(Studio studio);
     Studio getStudio(int id);
+    Studio getStudioByName(String name);
 }

@@ -1,6 +1,5 @@
 package com.myanimu.dao;
 
-import com.myanimu.dao.StudioDao;
 import com.myanimu.models.Studio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class StudioDaoImpl implements StudioDao {
+public class StudioDAOImpl implements StudioDAO {
     @PersistenceContext
     EntityManager entityManager;
 
@@ -23,18 +22,28 @@ public class StudioDaoImpl implements StudioDao {
     }
 
     @Override
-    public void remove(int id) {
+    public void removeStudio(int id) {
         Studio studio = entityManager.find(Studio.class, id);
         entityManager.remove(studio);
     }
 
     @Override
-    public void add(Studio studio) {
+    public void addStudio(Studio studio) {
         entityManager.merge(studio);
     }
 
     @Override
     public Studio getStudio(int id) {
         return entityManager.find(Studio.class, id);
+    }
+
+    @Override
+    public Studio getStudioByName(String name) {
+        String query = "FROM Studio WHERE name = :name";
+        List<Studio> studios = entityManager.createQuery(query).setParameter("name", name).getResultList();
+        if(studios.isEmpty()){
+            return null;
+        }
+        return studios.get(0);
     }
 }
