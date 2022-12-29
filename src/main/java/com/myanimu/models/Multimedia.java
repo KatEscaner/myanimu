@@ -21,11 +21,11 @@ public class Multimedia {
     private int id;
 
     @Getter @Setter
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Getter @Setter
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Getter @Setter
@@ -33,16 +33,12 @@ public class Multimedia {
     private int year;
 
     @Getter @Setter
-    @Column(name = "finished")
-    private boolean finished;
-
-    @Getter @Setter
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "franchise")
     private Franchise franchise;
 
     @Getter @Setter
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "studio")
     private Studio studio;
 

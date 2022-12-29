@@ -24,7 +24,7 @@ public class Book {
     private String name;
 
     @Getter @Setter
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Getter @Setter

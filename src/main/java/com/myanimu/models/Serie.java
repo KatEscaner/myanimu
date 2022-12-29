@@ -20,4 +20,8 @@ public class Serie extends Multimedia{
     @Getter @Setter
     @Column(name = "numCaps", length = 2)
     private int numCaps;
+
+    @Getter @Setter
+    @Column(name = "finished")
+    private boolean finished;
 }

@@ -20,7 +20,7 @@ public class Genre {
     private int id;
 
     @Getter @Setter
-    @Column(name = "name", length = 20)
+    @Column(name = "name", length = 20, unique = true)
     private String  name;
 
     @ManyToMany(cascade = {

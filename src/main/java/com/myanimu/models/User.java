@@ -21,7 +21,7 @@ public class User {
 
     @Getter
     @Setter
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Getter

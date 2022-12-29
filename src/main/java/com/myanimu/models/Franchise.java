@@ -20,16 +20,16 @@ public class Franchise {
     private int id;
 
     @Getter @Setter
-    @Column(name = "name", length = 50)
+    @Column(name = "name", length = 50, unique = true)
     private String name;
 
     @Getter @Setter
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "franchise", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Multimedia> multimedias;
 
-    @OneToMany(mappedBy = "franchise", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Book> books;
 }
