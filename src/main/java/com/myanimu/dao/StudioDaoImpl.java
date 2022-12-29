@@ -38,12 +38,12 @@ public class StudioDAOImpl implements StudioDAO {
     }
 
     @Override
-    public Studio getStudioByName(String name) {
+    public List<Studio> getStudioByName(String name) {
         String query = "FROM Studio WHERE name = :name";
         List<Studio> studios = entityManager.createQuery(query).setParameter("name", name).getResultList();
         if(studios.isEmpty()){
             return null;
         }
-        return studios.get(0);
+        return studios;
     }
 }

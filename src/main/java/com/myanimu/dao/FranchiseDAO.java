@@ -9,5 +9,5 @@ public interface FranchiseDAO {
     void removeFranchise(int id);
     void addFranchise(Franchise franchise);
     Franchise getFranchise(int id);
-    Franchise getFranchiseByName(String name);
+    List<Franchise> getFranchiseByName(String name);
 }

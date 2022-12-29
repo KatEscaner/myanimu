@@ -9,5 +9,5 @@ public interface StudioDAO {
     void removeStudio(int id);
     void addStudio(Studio studio);
     Studio getStudio(int id);
-    Studio getStudioByName(String name);
+    List<Studio> getStudioByName(String name);
 }

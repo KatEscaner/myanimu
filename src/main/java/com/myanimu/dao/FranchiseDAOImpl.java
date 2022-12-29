@@ -39,12 +39,12 @@ public class FranchiseDAOImpl implements FranchiseDAO {
     }
 
     @Override
-    public Franchise getFranchiseByName(String name) {
+    public List<Franchise> getFranchiseByName(String name) {
         String query = "FROM Franchise WHERE name = :name";
         List<Franchise> franchises = entityManager.createQuery(query).setParameter("name", name).getResultList();
         if(franchises.isEmpty()){
             return null;
         }
-        return franchises.get(0);
+        return franchises;
     }
 }

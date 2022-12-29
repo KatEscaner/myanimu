@@ -20,12 +20,6 @@ public class MultimediaDAOImpl implements MultimediaDAO{
     EntityManager entityManager;
 
     @Override
-    public List<Multimedia> getMultimedias() {
-        String query = "FROM Multimedia";
-        return entityManager.createQuery(query).getResultList();
-    }
-
-    @Override
     public List<Serie> getSeries() {
         String query = "FROM Serie";
         return entityManager.createQuery(query).getResultList();
@@ -71,5 +65,25 @@ public class MultimediaDAOImpl implements MultimediaDAO{
     @Override
     public Film getFilm(int id) {
         return entityManager.find(Film.class, id);
+    }
+
+    @Override
+    public List<Serie> getSerieByName(String name) {
+        String query = "FROM Serie WHERE name = :name";
+        List<Serie> series = entityManager.createQuery(query).setParameter("name", name).getResultList();
+        if (series.isEmpty()){
+            return null;
+        }
+        return series;
+    }
+
+    @Override
+    public List<Film> getFilmByName(String name) {
+        String query = "FROM Film WHERE name = :name";
+        List<Film> films = entityManager.createQuery(query).setParameter("name", name).getResultList();
+        if (films.isEmpty()){
+            return null;
+        }
+        return films;
     }
 }
