@@ -32,8 +32,8 @@ public class Book {
     private int year;
 
     @Getter @Setter
-    @Column(name = "autor", length = 50)
-    private String autor;
+    @Column(name = "author", length = 50)
+    private String author;
 
     @Getter @Setter
     @JoinColumn(name = "franchise")
