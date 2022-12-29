@@ -32,6 +32,10 @@ public class Book {
     private int year;
 
     @Getter @Setter
+    @Column(name = "finished")
+    private boolean finished;
+
+    @Getter @Setter
     @Column(name = "author", length = 50)
     private String author;
 
