@@ -16,4 +16,8 @@ public class Manga extends Book{
     @Getter @Setter
     @Column(name = "numVolum", length = 4)
     private int numVolum;
+
+    @Getter @Setter
+    @Column(name = "finished")
+    private boolean finished;
 }
