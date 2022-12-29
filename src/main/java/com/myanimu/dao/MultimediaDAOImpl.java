@@ -1,7 +1,6 @@
 package com.myanimu.dao;
 
 import com.myanimu.models.Film;
-import com.myanimu.models.Multimedia;
 import com.myanimu.models.Serie;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

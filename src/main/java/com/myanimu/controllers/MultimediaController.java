@@ -2,7 +2,6 @@ package com.myanimu.controllers;
 
 import com.myanimu.dao.MultimediaDAO;
 import com.myanimu.models.Film;
-import com.myanimu.models.Multimedia;
 import com.myanimu.models.Serie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +48,7 @@ public class MultimediaController {
     public void removeSerie(@PathVariable int id){
         multimediaDAO.removeSerie(id);
     }
-    
+
     @RequestMapping(value = "api/film/{id}", method = RequestMethod.DELETE)
     public void removeFilm(@PathVariable int id){
         multimediaDAO.removeFilm(id);

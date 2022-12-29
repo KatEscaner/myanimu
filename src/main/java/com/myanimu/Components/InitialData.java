@@ -1,7 +1,5 @@
 package com.myanimu.Components;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
 import com.myanimu.dao.*;
 import com.myanimu.models.*;
 import net.minidev.json.JSONArray;

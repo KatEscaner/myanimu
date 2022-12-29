@@ -1,7 +1,6 @@
 package com.myanimu.dao;
 
 import com.myanimu.models.Franchise;
-import com.myanimu.models.Studio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
