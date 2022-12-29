@@ -1,0 +1,69 @@
+{
+  "User":[
+    {
+      "username":"pepe",
+      "password":"12345",
+      "email":"algo@gmail.com",
+      "age":23,
+      "country":"ESP"
+    },
+    {
+      "username":"jose",
+      "password":"777",
+      "email":"jose@gmail.com",
+      "age":17,
+      "country":"ENG"
+    }
+  ],
+  "Studio":[
+    {
+      "name":"Ufotable"
+    },
+    {
+      "name":"Mappa"
+    }
+  ],
+  "Franchise":[
+    {
+      "name":"Fate",
+      "description":"Bad serie"
+    },
+    {
+      "name":"Evangelion",
+      "description":"The best serie, Evangelion >>>>>> Fate"
+    }
+  ],
+  "Genre":[
+    {
+      "name":"action"
+    },
+    {
+      "name":"Ecchi"
+    },
+    {
+      "name":"Science fiction"
+    }
+  ],
+  "Serie":[
+    {
+      "name":"Fate Stay Night",
+      "description":"The story revolves around Shirou Emiya, a hardworking and honest teenager who unwillingly enters a to-the-death tournament called the Fifth Holy Grail War, where combatants fight with magic and Heroes from throughout history for a chance to have their wishes granted by the eponymous Holy Grail.\n",
+      "year":2004,
+      "finished":true,
+      "averageDuration":24,
+      "numCaps":25,
+      "franchise": "Fate",
+      "studio": "Ufotable"
+    }
+  ],
+  "Film":[
+    {
+      "name":"Fate/stay night: Heaven's Feel",
+      "description":"Shit",
+      "year":2017,
+      "duration":120,
+      "franchise": "Fate",
+      "studio": "Ufotable"
+    }
+  ]
+}
