@@ -15,11 +15,6 @@ public class MultimediaController {
     @Autowired
     private MultimediaDAO multimediaDAO;
 
-    @RequestMapping(value = "api/multimedias", method = RequestMethod.GET)
-    public List<Multimedia> getMultimedias(){
-        return multimediaDAO.getMultimedias();
-    }
-
     @RequestMapping(value = "api/series", method = RequestMethod.GET)
     public List<Serie> getSeries(){
         return multimediaDAO.getSeries();
@@ -48,5 +43,15 @@ public class MultimediaController {
     @RequestMapping(value = "api/film", method = RequestMethod.POST)
     public void addFilm(@RequestBody Film film){
         multimediaDAO.addFilm(film);
+    }
+
+    @RequestMapping(value = "api/serie/{id}", method = RequestMethod.DELETE)
+    public void removeSerie(@PathVariable int id){
+        multimediaDAO.removeSerie(id);
+    }
+    
+    @RequestMapping(value = "api/film/{id}", method = RequestMethod.DELETE)
+    public void removeFilm(@PathVariable int id){
+        multimediaDAO.removeFilm(id);
     }
 }
