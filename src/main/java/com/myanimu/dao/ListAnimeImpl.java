@@ -1,11 +1,10 @@
 package com.myanimu.dao;
 
 import com.myanimu.jsonRequest.ListFilm;
+import com.myanimu.jsonRequest.ListManga;
+import com.myanimu.jsonRequest.ListNovel;
 import com.myanimu.jsonRequest.ListSerie;
-import com.myanimu.models.Film;
-import com.myanimu.models.ListAnime;
-import com.myanimu.models.Serie;
-import com.myanimu.models.User;
+import com.myanimu.models.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -100,6 +99,62 @@ public class ListAnimeImpl implements ListAnimeDAO{
         film.setListAnimes(listAnimes);
         listAnime.setFilms(films);
         entityManager.merge(film);
+        entityManager.merge(listAnime);
+    }
+
+    @Override
+    public void addListManga(ListManga listManga) {
+        ListAnime listAnime = entityManager.find(ListAnime.class, listManga.getList());
+        Manga manga = entityManager.find(Manga.class, listManga.getManga());
+        Set<Manga> mangas = listAnime.getMangas();
+        mangas.add(manga);
+        Set<ListAnime> listAnimes = manga.getListAnimes();
+        listAnimes.add(listAnime);
+        manga.setListAnimes(listAnimes);
+        listAnime.setMangas(mangas);
+        entityManager.merge(manga);
+        entityManager.merge(listAnime);
+    }
+
+    @Override
+    public void addListNovel(ListNovel listNovel) {
+        ListAnime listAnime = entityManager.find(ListAnime.class, listNovel.getList());
+        Novel novel = entityManager.find(Novel.class, listNovel.getNovel());
+        Set<Novel> novels = listAnime.getNovels();
+        novels.add(novel);
+        Set<ListAnime> listAnimes = novel.getListAnimes();
+        listAnimes.add(listAnime);
+        novel.setListAnimes(listAnimes);
+        listAnime.setNovels(novels);
+        entityManager.merge(novel);
+        entityManager.merge(listAnime);
+    }
+
+    @Override
+    public void removeListManga(ListManga listManga) {
+        ListAnime listAnime = entityManager.find(ListAnime.class, listManga.getList());
+        Manga manga = entityManager.find(Manga.class, listManga.getManga());
+        Set<Manga> mangas = listAnime.getMangas();
+        mangas.remove(manga);
+        Set<ListAnime> listAnimes = manga.getListAnimes();
+        listAnimes.remove(listAnime);
+        manga.setListAnimes(listAnimes);
+        listAnime.setMangas(mangas);
+        entityManager.merge(manga);
+        entityManager.merge(listAnime);
+    }
+
+    @Override
+    public void removeListNovel(ListNovel listNovel) {
+        ListAnime listAnime = entityManager.find(ListAnime.class, listNovel.getList());
+        Novel novel = entityManager.find(Novel.class, listNovel.getNovel());
+        Set<Novel> novels = listAnime.getNovels();
+        novels.remove(novel);
+        Set<ListAnime> listAnimes = novel.getListAnimes();
+        listAnimes.remove(listAnime);
+        novel.setListAnimes(listAnimes);
+        listAnime.setNovels(novels);
+        entityManager.merge(novel);
         entityManager.merge(listAnime);
     }
 }
