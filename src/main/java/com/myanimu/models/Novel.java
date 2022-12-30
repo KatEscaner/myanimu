@@ -21,6 +21,7 @@ public class Novel extends Book{
     @Column(name = "numPages", length = 4)
     private int numPages;
 
+    @Getter @Setter
     @ManyToMany(mappedBy = "novels")
     @JsonIgnoreProperties("novels")
     private Set<ListAnime> listAnimes;

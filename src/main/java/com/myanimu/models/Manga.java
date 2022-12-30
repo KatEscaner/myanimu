@@ -21,6 +21,7 @@ public class Manga extends Book{
     @Column(name = "numVolumes", length = 4)
     private int numVolumes;
 
+    @Getter @Setter
     @ManyToMany(mappedBy = "mangas")
     @JsonIgnoreProperties("mangas")
     private Set<ListAnime> listAnimes;
