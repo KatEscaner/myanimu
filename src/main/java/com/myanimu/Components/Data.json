@@ -47,7 +47,7 @@
   "Serie":[
     {
       "name":"Fate Stay Night",
-      "description":"The story revolves around Shirou Emiya, a hardworking and honest teenager who unwillingly enters a to-the-death tournament called the Fifth Holy Grail War, where combatants fight with magic and Heroes from throughout history for a chance to have their wishes granted by the eponymous Holy Grail.\n",
+      "description":"The story revolves around Shirou Emiya, a hardworking and honest teenager who unwillingly enters a to-the-death tournament called the Fifth Holy Grail War, where combatants fight with magic and Heroes from throughout history for a chance to have their wishes granted by the eponymous Holy Grail.",
       "year":2004,
       "finished":true,
       "averageDuration":24,
@@ -64,6 +64,30 @@
       "duration":120,
       "franchise": "Fate",
       "studio": "Ufotable"
+    }
+  ],
+  "Manga": [
+    {
+      "isbn": 9788467951851,
+      "name": "Neon Genesis Evangelion",
+      "description": "The series explores the experiences and emotions of Evangelion pilots and members of Nerv as they try to prevent Angels from causing more cataclysms. In the process, they are called upon to understand the ultimate causes of events and the motives for human action.",
+      "year": 1995,
+      "finished": true,
+      "author": "Yoshiyuki Sadamoto",
+      "numVolumes": 14,
+      "franchise": "Evangelion"
+    }
+  ],
+  "Novel": [
+    {
+      "isbn": 9788416703739,
+      "name": "Fate/Stay Night: Heaven'S Feel",
+      "description": "It is a fantastic, epic and dark story that takes us to a world where a mystical artifact with the power to fulfill any wish called The Holy Grail is given to the winner of a battle known as the Holy Grail War.",
+      "year": 2004,
+      "finished": true,
+      "author": "Kinoko Nasu",
+      "numPages": 164,
+      "franchise": "Fate"
     }
   ]
 }

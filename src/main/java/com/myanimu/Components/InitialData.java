@@ -33,7 +33,8 @@ public class InitialData implements ApplicationRunner {
     @Autowired
     MultimediaDAO multimediaDAO;
 
-
+    @Autowired
+    BookDAO bookDAO;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -43,6 +44,8 @@ public class InitialData implements ApplicationRunner {
         List<Genre> genres = new ArrayList<>();
         List<Serie> series = new ArrayList<>();
         List<Film> films = new ArrayList<>();
+        List<Manga> mangas = new ArrayList<>();
+        List<Novel> novels = new ArrayList<>();
 
         //GET INITIAL DATA FROM JSON FILE
         try{
@@ -121,7 +124,39 @@ public class InitialData implements ApplicationRunner {
                 films.add(film);
             }
 
+            JSONArray mangaArray = (JSONArray) jsonObject.get("Manga");
+            for (Object o: mangaArray){
+                Manga manga = new Manga();
+                JSONObject jsonObjectManga = (JSONObject) o;
+                manga.setIsbn((int) jsonObjectManga.getAsNumber("isbn").longValue());
+                manga.setName(jsonObjectManga.getAsString("name"));
+                manga.setDescription(jsonObjectManga.getAsString("description"));
+                manga.setYear((int) jsonObjectManga.getAsNumber("year"));
+                manga.setFinished(Objects.equals(jsonObjectManga.getAsString("finished"), "true"));
+                manga.setAuthor(jsonObjectManga.getAsString("author"));
+                manga.setNumVolumes((int) jsonObjectManga.getAsNumber("numVolumes"));
+                Franchise franchise = new Franchise();
+                franchise.setName(jsonObjectManga.getAsString("franchise"));
+                manga.setFranchise(franchise);
+                mangas.add(manga);
+            }
 
+            JSONArray novelArray = (JSONArray) jsonObject.get("Novel");
+            for (Object o : novelArray){
+                Novel novel = new Novel();
+                JSONObject jsonObjectNovel = (JSONObject) o;
+                novel.setIsbn((int) jsonObjectNovel.getAsNumber("isbn").longValue());
+                novel.setName(jsonObjectNovel.getAsString("name"));
+                novel.setDescription(jsonObjectNovel.getAsString("description"));
+                novel.setYear((int) jsonObjectNovel.getAsNumber("year"));
+                novel.setFinished(Objects.equals(jsonObjectNovel.getAsString("finished"), "true"));
+                novel.setAuthor(jsonObjectNovel.getAsString("author"));
+                novel.setNumPages((int) jsonObjectNovel.getAsNumber("numPages"));
+                Franchise franchise = new Franchise();
+                franchise.setName(jsonObjectNovel.getAsString("franchise"));
+                novel.setFranchise(franchise);
+                novels.add(novel);
+            }
 
         } catch (IOException e){
             e.printStackTrace();
@@ -164,25 +199,18 @@ public class InitialData implements ApplicationRunner {
             }
         });
 
+        mangas.stream().forEach(manga -> {
+            if (bookDAO.getMangaByName(manga.getName()) == null){
+                manga.setFranchise(franchiseDAO.getFranchiseByName(manga.getFranchise().getName()).get(0));
+                bookDAO.addManga(manga);
+            }
+        });
 
-
-
-        //        //-----------------Conditions-----------------
-//
-//        if (multimediaDAO.getSerieByName(serieFateStayNight.getName()) == null){
-//            if (franchiseDAO.getFranchiseByName(franchiseFate.getName()) != null)
-//                serieFateStayNight.setFranchise(franchiseDAO.getFranchiseByName(franchiseFate.getName()).get(0));
-//            if (studioDAO.getStudioByName(studioUfotable.getName()) != null)
-//                serieFateStayNight.setStudio(studioDAO.getStudioByName(studioUfotable.getName()).get(0));
-//            multimediaDAO.addSerie(serieFateStayNight);
-//        }
-//
-//        if (multimediaDAO.getFilmByName(filmFateStayNightHeavenSFeel.getName()) == null){
-//            if (franchiseDAO.getFranchiseByName(franchiseFate.getName()) != null)
-//                filmFateStayNightHeavenSFeel.setFranchise(franchiseDAO.getFranchiseByName(franchiseFate.getName()).get(0));
-//            if (studioDAO.getStudioByName(studioUfotable.getName()) != null)
-//                filmFateStayNightHeavenSFeel.setStudio(studioDAO.getStudioByName(studioUfotable.getName()).get(0));
-//            multimediaDAO.addFilm(filmFateStayNightHeavenSFeel);
-//        }
+        novels.stream().forEach(novel -> {
+            if (bookDAO.getNovel(novel.getIsbn()) == null){
+                novel.setFranchise(franchiseDAO.getFranchiseByName(novel.getFranchise().getName()).get(0));
+                bookDAO.addNovel(novel);
+            }
+        });
     }
 }
