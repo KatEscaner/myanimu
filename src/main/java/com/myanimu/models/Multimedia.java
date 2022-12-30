@@ -41,8 +41,4 @@ public class Multimedia {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "studio")
     private Studio studio;
-
-    @Getter @Setter
-    @ManyToMany(mappedBy = "multimedias")
-    private Set<Genre> genres;
 }

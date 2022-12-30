@@ -34,4 +34,9 @@ public class Serie extends Multimedia{
     @ManyToMany(mappedBy = "series")
     @JsonIgnoreProperties("series")
     private Set<ListAnime> listAnimes;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "series")
+    @JsonIgnoreProperties("series")
+    private Set<Genre> genres;
 }

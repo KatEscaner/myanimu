@@ -25,4 +25,9 @@ public class Novel extends Book{
     @ManyToMany(mappedBy = "novels")
     @JsonIgnoreProperties("novels")
     private Set<ListAnime> listAnimes;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "novels")
+    @JsonIgnoreProperties("novels")
+    private Set<Genre> genres;
 }

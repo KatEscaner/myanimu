@@ -1,5 +1,6 @@
 package com.myanimu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -22,5 +23,11 @@ public class Film extends Multimedia{
 
     @Getter @Setter
     @ManyToMany(mappedBy = "films")
+    @JsonIgnoreProperties("films")
     private Set<ListAnime> listAnimes;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "films")
+    @JsonIgnoreProperties("films")
+    private Set<Genre> genres;
 }

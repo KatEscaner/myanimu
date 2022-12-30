@@ -27,19 +27,39 @@ public class Genre {
             CascadeType.PERSIST
     })
     @JoinTable(
-            name = "genre_multimedia",
+            name = "genre_serie",
             joinColumns = {@JoinColumn(name = "genre")},
-            inverseJoinColumns = {@JoinColumn(name = "multimedia")}
+            inverseJoinColumns = {@JoinColumn(name = "series")}
     )
-    private Set<Multimedia> multimedias;
+    private Set<Serie> series;
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST
     })
     @JoinTable(
-            name = "genre_book",
+            name = "genre_film",
             joinColumns = {@JoinColumn(name = "genre")},
-            inverseJoinColumns = {@JoinColumn(name = "book")}
+            inverseJoinColumns = {@JoinColumn(name = "films")}
     )
-    private Set<Book> books;
+    private Set<Film> films;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST
+    })
+    @JoinTable(
+            name = "genre_manga",
+            joinColumns = {@JoinColumn(name = "genre")},
+            inverseJoinColumns = {@JoinColumn(name = "manga")}
+    )
+    private Set<Manga> mangas;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST
+    })
+    @JoinTable(
+            name = "genre_novel",
+            joinColumns = {@JoinColumn(name = "genre")},
+            inverseJoinColumns = {@JoinColumn(name = "novel")}
+    )
+    private Set<Novel> novels;
 }
