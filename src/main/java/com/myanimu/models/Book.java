@@ -45,8 +45,5 @@ public class Book {
     private Franchise franchise;
 
     @ManyToMany(mappedBy = "books")
-    private Set<ListAnime> listAnimes;
-
-    @ManyToMany(mappedBy = "books")
     private Set<Genre> genres;
 }

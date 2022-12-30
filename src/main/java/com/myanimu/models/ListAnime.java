@@ -52,10 +52,22 @@ public class ListAnime {
             CascadeType.PERSIST
     })
     @JoinTable(
-            name = "list_book",
+            name = "list_manga",
             joinColumns = {@JoinColumn(name = "listAnime")},
-            inverseJoinColumns = {@JoinColumn(name = "book")}
+            inverseJoinColumns = {@JoinColumn(name = "mangas")}
     )
     @JsonIgnoreProperties("listAnimes")
-    private Set<Book> books;
+    private Set<Manga> mangas;
+
+    @Getter @Setter
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST
+    })
+    @JoinTable(
+            name = "list_novel",
+            joinColumns = {@JoinColumn(name = "listAnime")},
+            inverseJoinColumns = {@JoinColumn(name = "novel")}
+    )
+    @JsonIgnoreProperties("listAnimes")
+    private Set<Novel> novels;
 }
