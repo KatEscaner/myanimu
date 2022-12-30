@@ -3,10 +3,10 @@ package com.myanimu.controllers;
 import com.myanimu.dao.GenreDAO;
 import com.myanimu.dao.ListAnimeDAO;
 import com.myanimu.jsonRequest.ListFilm;
+import com.myanimu.jsonRequest.ListManga;
+import com.myanimu.jsonRequest.ListNovel;
 import com.myanimu.jsonRequest.ListSerie;
-import com.myanimu.models.Film;
-import com.myanimu.models.ListAnime;
-import com.myanimu.models.Serie;
+import com.myanimu.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,5 +57,35 @@ public class ListAnimeController {
     @RequestMapping(value = "api/listfilm", method = RequestMethod.DELETE)
     private void removeListFilm(@PathVariable ListFilm listFilm){
         listAnimeDAO.removeListFilm(listFilm);
+    }
+
+    @RequestMapping(value = "api/listmanga/{username}", method = RequestMethod.GET)
+    public Set<Manga> getListManga(@PathVariable String username){
+        return listAnimeDAO.getListByUser(username).getMangas();
+    }
+
+    @RequestMapping(value = "api/listnovel/{username}", method = RequestMethod.GET)
+    public Set<Novel> setListNovel(@PathVariable String username){
+        return listAnimeDAO.getListByUser(username).getNovels();
+    }
+
+    @RequestMapping(value = "api/listmanga", method = RequestMethod.POST)
+    public void addListManga(@RequestBody ListManga listManga){
+        listAnimeDAO.addListManga(listManga);
+    }
+
+    @RequestMapping(value = "api/listnovel", method = RequestMethod.POST)
+    public void addListNovel(@RequestBody ListNovel listNovel){
+        listAnimeDAO.addListNovel(listNovel);
+    }
+
+    @RequestMapping(value = "api/listmanga", method = RequestMethod.DELETE)
+    private void removeListManga(@RequestBody ListManga listManga){
+        listAnimeDAO.removeListManga(listManga);
+    }
+
+    @RequestMapping(value = "api/listnovel", method = RequestMethod.DELETE)
+    private void removeListManga(@RequestBody ListNovel listNovel){
+        listAnimeDAO.removeListNovel(listNovel);
     }
 }
