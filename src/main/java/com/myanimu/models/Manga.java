@@ -14,6 +14,6 @@ import lombok.ToString;
 public class Manga extends Book{
 
     @Getter @Setter
-    @Column(name = "numVolum", length = 4)
-    private int numVolum;
+    @Column(name = "numVolumes", length = 4)
+    private int numVolumes;
 }

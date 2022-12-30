@@ -44,11 +44,9 @@ public class Book {
     @ManyToOne()
     private Franchise franchise;
 
-    @Getter @Setter
     @ManyToMany(mappedBy = "books")
     private Set<ListAnime> listAnimes;
 
-    @Getter @Setter
     @ManyToMany(mappedBy = "books")
     private Set<Genre> genres;
 }
