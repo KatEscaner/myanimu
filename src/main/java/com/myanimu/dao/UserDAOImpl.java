@@ -1,5 +1,6 @@
 package com.myanimu.dao;
 
+import com.myanimu.models.ListAnime;
 import com.myanimu.models.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -25,12 +26,17 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void removeUser(String username) {
         User user = entityManager.find(User.class, username);
+        String query = "FROM ListAnime WHERE user = :user";
+        entityManager.remove(entityManager.createQuery(query).setParameter("user", user.getUsername()));
         entityManager.remove(user);
     }
 
     @Override
     public void addUser(User user) {
         entityManager.merge(user);
+        ListAnime listAnime = new ListAnime();
+        listAnime.setUser(user);
+        entityManager.merge(listAnime);
     }
 
     @Override
