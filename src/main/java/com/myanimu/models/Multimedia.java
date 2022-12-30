@@ -42,9 +42,7 @@ public class Multimedia {
     @JoinColumn(name = "studio")
     private Studio studio;
 
-    @ManyToMany(mappedBy = "multimedias")
-    private Set<ListAnime> listAnimes;
-
+    @Getter @Setter
     @ManyToMany(mappedBy = "multimedias")
     private Set<Genre> genres;
 }

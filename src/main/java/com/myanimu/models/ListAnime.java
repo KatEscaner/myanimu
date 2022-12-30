@@ -1,8 +1,10 @@
 package com.myanimu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.Set;
 
@@ -23,25 +25,37 @@ public class ListAnime {
 
     @Getter @Setter
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.PERSIST
         })
     @JoinTable(
-            name = "list_multimedia",
+            name = "list_serie",
             joinColumns = {@JoinColumn(name = "listAnime")},
-            inverseJoinColumns = {@JoinColumn(name = "multimedia")}
+            inverseJoinColumns = {@JoinColumn(name = "series")}
     )
-    private Set<Multimedia> multimedias;
+    @JsonIgnoreProperties("listAnimes")
+    private Set<Serie> series;
 
     @Getter @Setter
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.PERSIST
+    })
+    @JoinTable(
+            name = "list_film",
+            joinColumns = {@JoinColumn(name = "listAnime")},
+            inverseJoinColumns = {@JoinColumn(name = "films")}
+    )
+    @JsonIgnoreProperties("listAnimes")
+    private Set<Film> films;
+
+    @Getter @Setter
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST
     })
     @JoinTable(
             name = "list_book",
             joinColumns = {@JoinColumn(name = "listAnime")},
             inverseJoinColumns = {@JoinColumn(name = "book")}
     )
+    @JsonIgnoreProperties("listAnimes")
     private Set<Book> books;
 }
