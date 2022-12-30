@@ -24,8 +24,7 @@ public class Genre {
     private String  name;
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.PERSIST
     })
     @JoinTable(
             name = "genre_multimedia",
@@ -35,8 +34,7 @@ public class Genre {
     private Set<Multimedia> multimedias;
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.PERSIST
     })
     @JoinTable(
             name = "genre_book",
