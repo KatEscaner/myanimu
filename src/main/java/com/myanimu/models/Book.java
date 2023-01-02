@@ -43,7 +43,4 @@ public class Book {
     @JoinColumn(name = "franchise")
     @ManyToOne()
     private Franchise franchise;
-
-    @ManyToMany(mappedBy = "books")
-    private Set<Genre> genres;
 }
