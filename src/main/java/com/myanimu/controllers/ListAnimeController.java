@@ -50,12 +50,12 @@ public class ListAnimeController {
     }
 
     @RequestMapping(value = "api/listserie", method = RequestMethod.DELETE)
-    private void removeListSerie(@RequestBody ListSerie listSerie){
+    public void removeListSerie(@RequestBody ListSerie listSerie){
         listAnimeDAO.removeListSerie(listSerie);
     }
 
     @RequestMapping(value = "api/listfilm", method = RequestMethod.DELETE)
-    private void removeListFilm(@PathVariable ListFilm listFilm){
+    public void removeListFilm(@PathVariable ListFilm listFilm){
         listAnimeDAO.removeListFilm(listFilm);
     }
 
@@ -80,12 +80,12 @@ public class ListAnimeController {
     }
 
     @RequestMapping(value = "api/listmanga", method = RequestMethod.DELETE)
-    private void removeListManga(@RequestBody ListManga listManga){
+    public void removeListManga(@RequestBody ListManga listManga){
         listAnimeDAO.removeListManga(listManga);
     }
 
     @RequestMapping(value = "api/listnovel", method = RequestMethod.DELETE)
-    private void removeListManga(@RequestBody ListNovel listNovel){
+    public void removeListManga(@RequestBody ListNovel listNovel){
         listAnimeDAO.removeListNovel(listNovel);
     }
 }
