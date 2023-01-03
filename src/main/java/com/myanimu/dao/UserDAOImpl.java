@@ -5,6 +5,8 @@ import com.myanimu.models.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,8 +33,13 @@ public class UserDAOImpl implements UserDAO {
         entityManager.remove(user);
     }
 
+    PasswordEncoder passwordEncoder(){
+        return  new BCryptPasswordEncoder();
+    }
+
     @Override
     public void addUser(User user) {
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
         entityManager.merge(user);
         ListAnime listAnime = new ListAnime();
         listAnime.setUser(user);
@@ -42,5 +49,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User getUser(String username) {
         return entityManager.find(User.class, username);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        String query = "FROM User WHERE email = :email";
+        return (User) entityManager.createQuery(query).setParameter("email", email).getResultList().get(0);
     }
 }

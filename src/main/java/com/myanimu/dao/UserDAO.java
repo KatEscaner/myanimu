@@ -9,4 +9,5 @@ public interface UserDAO {
     void removeUser(String username);
     void addUser(User user);
     User getUser(String username);
+    User getUserByEmail(String email);
 }
