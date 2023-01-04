@@ -1,9 +1,9 @@
 {
   "User":[
     {
-      "username":"pepe",
-      "password":"12345",
-      "email":"algo@gmail.com",
+      "username":"admin",
+      "password":"admin123",
+      "email":"admin@gmail.com",
       "age":23,
       "country":"ESP"
     },
