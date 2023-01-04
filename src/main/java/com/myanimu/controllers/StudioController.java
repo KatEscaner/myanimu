@@ -13,22 +13,22 @@ public class StudioController {
     @Autowired
     private StudioDAO studioDao;
 
-    @RequestMapping(value = "api/studio/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/studio/{id}", method = RequestMethod.GET)
     public Studio getStudio(@PathVariable int id){
         return studioDao.getStudio(id);
     }
 
-    @RequestMapping(value = "api/studios", method = RequestMethod.GET)
+    @RequestMapping(value = "user/studios", method = RequestMethod.GET)
     public List<Studio> getStudios(){
         return studioDao.getStudios();
     }
 
-    @RequestMapping(value = "api/studio", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/studio", method = RequestMethod.POST)
     public void addStudio(@RequestBody Studio studio){
         studioDao.addStudio(studio);
     }
 
-    @RequestMapping(value = "api/studio/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/studio/{id}", method = RequestMethod.DELETE)
     public void removeStudio(@PathVariable int id){
         studioDao.removeStudio(id);
     }

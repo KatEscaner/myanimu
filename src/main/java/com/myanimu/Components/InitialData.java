@@ -165,7 +165,7 @@ public class InitialData implements ApplicationRunner {
         //ADD INITIAL DATA TO THE DATEBASE
         users.stream().forEach(user -> {
             if (userDAO.getUser(user.getUsername()) == null)
-                userDAO.addUser(user);
+                userDAO.addAdmin(user);
         });
 
         studios.stream().forEach(studio -> {

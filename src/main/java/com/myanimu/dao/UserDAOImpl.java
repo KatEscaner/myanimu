@@ -40,6 +40,17 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void addUser(User user) {
         user.setPassword(passwordEncoder().encode(user.getPassword()));
+        user.setAdmin(false);
+        entityManager.merge(user);
+        ListAnime listAnime = new ListAnime();
+        listAnime.setUser(user);
+        entityManager.merge(listAnime);
+    }
+
+    @Override
+    public void addAdmin(User user) {
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
+        user.setAdmin(true);
         entityManager.merge(user);
         ListAnime listAnime = new ListAnime();
         listAnime.setUser(user);

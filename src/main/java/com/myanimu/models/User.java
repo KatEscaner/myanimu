@@ -36,4 +36,7 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private ListAnime listAnime;
+
+    @Getter @Setter
+    private boolean admin;
 }

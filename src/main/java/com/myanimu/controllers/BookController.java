@@ -14,42 +14,42 @@ public class BookController {
     @Autowired
     private BookDAO bookDAO;
 
-    @RequestMapping(value = "api/mangas", method = RequestMethod.GET)
+    @RequestMapping(value = "user/mangas", method = RequestMethod.GET)
     public List<Manga> getMangas(){
         return bookDAO.getMangas();
     }
 
-    @RequestMapping(value = "api/novelas", method = RequestMethod.GET)
+    @RequestMapping(value = "user/novelas", method = RequestMethod.GET)
     public List<Novel> getNovels(){
         return bookDAO.getNovels();
     }
 
-    @RequestMapping(value = "api/manga/{isbn}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/manga/{isbn}", method = RequestMethod.GET)
     public Manga getManga(@PathVariable int isbn){
         return bookDAO.getManga(isbn);
     }
 
-    @RequestMapping(value = "api/novel/{isbn}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/novel/{isbn}", method = RequestMethod.GET)
     public Novel getNovel(@PathVariable int isbn){
         return bookDAO.getNovel(isbn);
     }
 
-    @RequestMapping(value = "api/manga", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/manga", method = RequestMethod.POST)
     public void addManga(@RequestBody Manga manga){
         bookDAO.addManga(manga);
     }
 
-    @RequestMapping(value = "api/novel", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/novel", method = RequestMethod.POST)
     public void addNovel(@RequestBody Novel novel){
         bookDAO.addNovel(novel);
     }
 
-    @RequestMapping(value = "api/manga/{isbn}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/manga/{isbn}", method = RequestMethod.DELETE)
     public void removeManga(@PathVariable int isbn){
         bookDAO.removeManga(isbn);
     }
 
-    @RequestMapping(value = "api/novel/{isbn}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/novel/{isbn}", method = RequestMethod.DELETE)
     public void removeNovel(@PathVariable int isbn){
         bookDAO.removeNovel(isbn);
     }
