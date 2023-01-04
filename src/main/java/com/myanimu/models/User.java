@@ -16,7 +16,7 @@ public class User {
 
     @Getter
     @Setter
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Getter
