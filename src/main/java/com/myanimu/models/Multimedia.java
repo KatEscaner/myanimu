@@ -1,5 +1,6 @@
 package com.myanimu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,11 +35,13 @@ public class Multimedia {
 
     @Getter @Setter
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("multimedias")
     @JoinColumn(name = "franchise")
     private Franchise franchise;
 
     @Getter @Setter
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("multimedias")
     @JoinColumn(name = "studio")
     private Studio studio;
 }

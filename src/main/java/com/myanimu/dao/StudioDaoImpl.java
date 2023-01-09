@@ -1,5 +1,7 @@
 package com.myanimu.dao;
 
+import com.myanimu.models.Film;
+import com.myanimu.models.Serie;
 import com.myanimu.models.Studio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -23,7 +25,24 @@ public class StudioDAOImpl implements StudioDAO {
 
     @Override
     public void removeStudio(int id) {
+        String querySerie = "FROM Serie WHERE studio = :studio";
+        String queryFilm = "FROM Film WHERE studio = :studio";
         Studio studio = entityManager.find(Studio.class, id);
+        List<Serie> series = entityManager.createQuery(querySerie).setParameter("studio", studio).getResultList();
+        List<Film> films = entityManager.createQuery(queryFilm).setParameter("studio", studio).getResultList();
+
+        series.stream().forEach(serie -> {
+            serie.setStudio(null);
+            entityManager.merge(serie);
+        });
+
+        films.stream().forEach(film -> {
+            film.setStudio(null);
+            entityManager.merge(film);
+        });
+
+        studio.setMultimedias(null);
+        entityManager.merge(studio);
         entityManager.remove(studio);
     }
 

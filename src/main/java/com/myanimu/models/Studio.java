@@ -23,6 +23,7 @@ public class Studio {
     @Column(name = "name", length = 50, unique = true)
     private String name;
 
+    @Getter @Setter
     @OneToMany(mappedBy = "studio", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Multimedia> multimedias;
 }

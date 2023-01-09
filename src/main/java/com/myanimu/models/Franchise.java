@@ -27,9 +27,11 @@ public class Franchise {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Getter @Setter
+    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Multimedia> multimedias;
 
-    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Getter @Setter
+    @OneToMany(mappedBy = "franchise", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Book> books;
 }

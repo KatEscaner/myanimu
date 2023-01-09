@@ -19,7 +19,7 @@ public class BookController {
         return bookDAO.getMangas();
     }
 
-    @RequestMapping(value = "user/novelas", method = RequestMethod.GET)
+    @RequestMapping(value = "user/novels", method = RequestMethod.GET)
     public List<Novel> getNovels(){
         return bookDAO.getNovels();
     }

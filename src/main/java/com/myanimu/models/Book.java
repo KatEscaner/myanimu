@@ -40,7 +40,7 @@ public class Book {
     private String author;
 
     @Getter @Setter
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinColumn(name = "franchise")
-    @ManyToOne()
     private Franchise franchise;
 }
